@@ -148,8 +148,16 @@ h2 {
   font-size: 1.8rem;
 }
 
+h3 {
+  font-size: 2.2rem;
+}
+
 h4 {
   font-size: 1.4rem;
+}
+
+p {
+  font-size: 1.6rem;
 }
 
 img {
@@ -207,4 +215,7 @@ img {
 
 .playersCard {
   border: 1px solid black;
+  margin: 5px 5px;
+  border-radius: 6px;
+  padding: 10px 10px;
 }
