@@ -5,9 +5,11 @@ const Players = ({ players }) => {
   return (
     <div className="playersContainer">
       {!players.isLoading ? (
-        players.map(player => {
-          return <PlayersCard player={player} key={player.id} />;
-        })
+        players
+          .sort((a, b) => b.searches - a.searches)
+          .map(player => {
+            return <PlayersCard player={player} key={player.id} />;
+          })
       ) : (
         <h2>Loading...</h2>
       )}

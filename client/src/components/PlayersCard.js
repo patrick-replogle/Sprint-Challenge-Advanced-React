@@ -6,7 +6,6 @@ const PlayersCard = ({ player }) => {
       <h3>Name: {player.name}</h3>
       <p>Country: {player.country}</p>
       <p>Searches: {player.searches}</p>
-      <p>ID: {player.id}</p>
     </div>
   );
 };
