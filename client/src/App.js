@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import NavBar from "./components/NavBar";
+
 import "./App.css";
 
 class App extends React.Component {
@@ -26,7 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>something</h1>
+        <NavBar />
       </div>
     );
   }
