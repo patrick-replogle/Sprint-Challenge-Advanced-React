@@ -7,17 +7,23 @@ import Players from "./components/Players";
 import "./App.css";
 
 class App extends React.Component {
-  _isMounted = false;
   constructor() {
     super();
     this.state = {
       players: []
     };
   }
+
+  CancelToken = axios.CancelToken;
+  source = this.CancelToken.source();
+
+  abortController = new AbortController();
+
   componentDidMount() {
-    this._isMounted = true;
     axios
-      .get("http://localhost:5000/api/players")
+      .get("http://localhost:5000/api/players", {
+        cancelToken: this.source.token
+      })
       .then(res => {
         this.setState({
           players: res.data
@@ -26,6 +32,10 @@ class App extends React.Component {
       .catch(err => {
         console.log("error: ", err);
       });
+  }
+
+  componentWillUnmount() {
+    this.source.cancel("Operation canceled by the user.");
   }
 
   render() {

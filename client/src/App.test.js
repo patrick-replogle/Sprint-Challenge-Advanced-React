@@ -22,7 +22,7 @@ test("Renders Womens World Cup text", () => {
   expect(wrapper.getByText(/women's world cup/i));
 });
 
-test("Players is defined", () => {
+test("Players are defined", () => {
   const players = <Players />;
   expect(players).toBeDefined();
   expect(players).not.toBeUndefined();
