@@ -211,6 +211,7 @@ img {
 .playersContainer {
   display: flex;
   flex-wrap: wrap;
+  margin: 15px 0;
 }
 
 .playersCard {

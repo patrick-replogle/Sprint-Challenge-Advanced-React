@@ -35,3 +35,17 @@ test("PlayerCard is defined", () => {
   expect(card).not.toBeUndefined();
   expect(card).not.toBeFalsy();
 });
+
+test("useDarkMode exists", () => {
+  const dark = <useDarkMode />;
+  expect(dark).toBeDefined();
+  expect(dark).not.toBeUndefined();
+  expect(dark).not.toBeFalsy();
+});
+
+test("uselocalStorage exists", () => {
+  const storage = <useLocalStorage />;
+  expect(storage).toBeDefined();
+  expect(storage).not.toBeUndefined();
+  expect(storage).not.toBeFalsy();
+});

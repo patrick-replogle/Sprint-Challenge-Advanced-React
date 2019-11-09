@@ -10,13 +10,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      isLoading: true,
       players: []
     };
   }
 
   CancelToken = axios.CancelToken;
   source = this.CancelToken.source();
-
   abortController = new AbortController();
 
   componentDidMount() {
@@ -26,7 +26,8 @@ class App extends React.Component {
       })
       .then(res => {
         this.setState({
-          players: res.data
+          players: res.data,
+          isLoading: false
         });
       })
       .catch(err => {
@@ -42,7 +43,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBar />
-        <Players players={this.state.players} />
+        <Players
+          players={this.state.players}
+          isLoading={this.state.isLoading}
+        />
       </div>
     );
   }

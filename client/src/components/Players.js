@@ -4,9 +4,13 @@ import PlayersCard from "./PlayersCard";
 const Players = ({ players }) => {
   return (
     <div className="playersContainer">
-      {players.map(player => {
-        return <PlayersCard player={player} key={player.id} />;
-      })}
+      {!players.isLoading ? (
+        players.map(player => {
+          return <PlayersCard player={player} key={player.id} />;
+        })
+      ) : (
+        <h2>Loading...</h2>
+      )}
     </div>
   );
 };
