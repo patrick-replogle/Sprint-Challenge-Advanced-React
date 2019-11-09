@@ -6,9 +6,6 @@ import App from "./App";
 import NavBar from "./components/NavBar";
 import Players from "./components/Players";
 import PlayersCard from "./components/PlayersCard";
-import useDarkMode from "./hooks/useDarkMode";
-import useLocalStorage from "./hooks/useLocalStorage";
-import expectExport from "expect";
 
 afterEach(rtl.cleanup);
 
@@ -23,4 +20,18 @@ test("NavBar renders without crashing", () => {
 test("Renders Womens World Cup text", () => {
   const wrapper = rtl.render(<App />);
   expect(wrapper.getByText(/women's world cup/i));
+});
+
+test("Players is defined", () => {
+  const players = <Players />;
+  expect(players).toBeDefined();
+  expect(players).not.toBeUndefined();
+  expect(players).not.toBeFalsy();
+});
+
+test("PlayerCard is defined", () => {
+  const card = <PlayersCard />;
+  expect(card).toBeDefined();
+  expect(card).not.toBeUndefined();
+  expect(card).not.toBeFalsy();
 });

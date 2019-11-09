@@ -1,10 +1,10 @@
 import React from "react";
 import PlayersCard from "./PlayersCard";
 
-const Players = props => {
+const Players = ({ players }) => {
   return (
     <div className="playersContainer">
-      {props.players.map(player => {
+      {players.map(player => {
         return <PlayersCard player={player} key={player.id} />;
       })}
     </div>

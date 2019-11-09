@@ -7,6 +7,7 @@ import Players from "./components/Players";
 import "./App.css";
 
 class App extends React.Component {
+  _isMounted = false;
   constructor() {
     super();
     this.state = {
@@ -14,6 +15,7 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
+    this._isMounted = true;
     axios
       .get("http://localhost:5000/api/players")
       .then(res => {
@@ -25,6 +27,7 @@ class App extends React.Component {
         console.log("error: ", err);
       });
   }
+
   render() {
     return (
       <div className="App">
