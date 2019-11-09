@@ -15,11 +15,7 @@ class App extends React.Component {
     };
   }
 
-  CancelToken = axios.CancelToken;
-  source = this.CancelToken.source();
-  abortController = new AbortController();
-
-  componentDidMount() {
+  fetchData() {
     axios
       .get("http://localhost:5000/api/players", {
         cancelToken: this.source.token
@@ -33,6 +29,14 @@ class App extends React.Component {
       .catch(err => {
         console.log("error: ", err);
       });
+  }
+
+  CancelToken = axios.CancelToken;
+  source = this.CancelToken.source();
+  abortController = new AbortController();
+
+  componentDidMount() {
+    this.fetchData();
   }
 
   componentWillUnmount() {

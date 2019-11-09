@@ -9,7 +9,7 @@ const Navbar = () => {
   };
   return (
     <nav className="navbar">
-      <h2>Women's World Cup 2019 Player Rankings</h2>
+      <h1>Women's World Cup 2019 Player Rankings</h1>
       <div className="dark-mode__toggle">
         <button
           onClick={toggleMode}
