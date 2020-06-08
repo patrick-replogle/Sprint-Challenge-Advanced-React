@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavBar from "./components/NavBar";
+import Players from "./components/Players";
+
+import "./App.css";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoading: true,
+      players: []
+    };
+  }
+
+  fetchData() {
+    axios
+      .get("http://localhost:5000/api/players", {
+        cancelToken: this.source.token
+      })
+      .then(res => {
+        this.setState({
+          players: res.data,
+          isLoading: false
+        });
+      })
+      .catch(err => {
+        console.log("error: ", err);
+      });
+  }
+
+  CancelToken = axios.CancelToken;
+  source = this.CancelToken.source();
+  abortController = new AbortController();
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  componentWillUnmount() {
+    this.source.cancel("Operation canceled by the user.");
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+        <Players
+          players={this.state.players}
+          isLoading={this.state.isLoading}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
